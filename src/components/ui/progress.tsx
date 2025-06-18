@@ -12,7 +12,7 @@ function Progress({ className, value, ...props }: React.ComponentProps<typeof Pr
 			className={cn(
 				'relative h-3 w-full overflow-hidden rounded-full',
 				// Modified
-				'border bg-transparent',
+				'border bg-white',
 				className
 			)}
 			{...props}
