@@ -4,16 +4,19 @@ import { ListFilterIcon, SearchIcon } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { useTRPC } from '@/trpc/client'
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { useState } from 'react'
-import { CustomCategory } from '../types'
 import { CategoriesSidebar } from './categories-sidebar'
 
 interface Props {
 	disabled?: boolean
-	data: CustomCategory[]
 }
 
-export const SearchInput = ({ disabled, data }: Props) => {
+export const SearchInput = ({ disabled }: Props) => {
+	const trpc = useTRPC()
+	const { data } = useSuspenseQuery(trpc.categories.getMany.queryOptions())
+
 	const [isSidebarOpen, setIsSidebarOpen] = useState(false)
 
 	return (
