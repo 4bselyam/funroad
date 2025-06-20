@@ -5,6 +5,7 @@ import { Category } from '@/payload-types'
 import { Footer } from './footer'
 import { Navbar } from './navbar'
 import { SearchFilters } from './search-filters'
+import { CustomCategory } from './types'
 
 const Layout = async ({ children }: React.PropsWithChildren) => {
 	const payload = await getPayload({
@@ -20,9 +21,10 @@ const Layout = async ({ children }: React.PropsWithChildren) => {
 				exists: false,
 			},
 		},
+		sort: 'name',
 	})
 
-	const formattedData = data.docs.map(doc => ({
+	const formattedData: CustomCategory[] = data.docs.map(doc => ({
 		...doc,
 		subcategories: (doc.subcategories?.docs ?? []).map(doc => ({
 			...(doc as Category),
