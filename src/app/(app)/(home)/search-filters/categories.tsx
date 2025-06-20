@@ -4,12 +4,12 @@ import { useEffect, useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-import { CustomCategory } from '../types'
+import { CategoriesGetManyOutput } from '@/modules/categories/types'
 import { CategoriesSidebar } from './categories-sidebar'
 import { CategoryDropdown } from './category-dropdown'
 
 interface Props {
-	data: CustomCategory[]
+	data: CategoriesGetManyOutput
 }
 
 export const Categories = ({ data }: Props) => {
